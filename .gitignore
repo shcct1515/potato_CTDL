@@ -1,0 +1,26 @@
+.vscode/
+
+*.DS_Store
+Thumbs.db
+
+
+*.log
+
+# Bỏ qua file môi trường
+.env
+
+
+dist/
+build/
+out/
+
+*.tmp
+*.swp
+*.bak
+
+
+*.exe
+*.o
+*.obj
+*.dll
+*.out
