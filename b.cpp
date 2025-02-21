@@ -22,6 +22,12 @@ void insertafterheader(elementtype x, list l){
     l->next = newNode;
 }
 
+void del(list l){
+    node* p = l->next;
+    l->next = p->next;
+    free(p);
+}
+
 void printlist(list l){
     node* p = l->next;
     while (p != NULL)
@@ -37,6 +43,7 @@ int main(){
     insertafterheader(10, l);
     insertafterheader(11, l);
     insertafterheader(12, l);
+    del(l);
     printlist(l);
     return 0;
 }
