@@ -6,36 +6,37 @@ typedef struct node
 {
     elementtype element;
     struct node* next;
-}node;
+} node;
 typedef node* list;
-typedef list position;
 
 list makenull(){
-    list head = (node*)malloc(sizeof(node));
-    head->next = NULL;
-    return head;
+    list header = (node*)malloc(sizeof(node));
+    header->next = NULL;
+    return header;
 }
 
-void insertafterhead(elementtype x, list l){
+void insertafterheader(elementtype x, list l){
     node* newNode = (node*)malloc(sizeof(node));
     newNode->element = x;
     newNode->next = l->next;
     l->next = newNode;
 }
 
-void printList(list l) {
+void printlist(list l){
     node* p = l->next;
-    while (p != NULL) {
-        printf("%d -> ", p->element);
+    while (p != NULL)
+    {
+        printf("%d ", p->element);
         p = p->next;
     }
+    
 }
 
 int main(){
     list l = makenull();
-    insertafterhead(10, l);
-    insertafterhead(12, l);
-    insertafterhead(13, l);
-    printList(l);
+    insertafterheader(10, l);
+    insertafterheader(11, l);
+    insertafterheader(12, l);
+    printlist(l);
     return 0;
 }

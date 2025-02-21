@@ -1,8 +1,6 @@
-#include<stdio.h>
-
-int main(){
-    int n;
-    int a[n];
-    
-    return 0;
+void insertafterhead(elementtype x, list l){
+    node* newNode = (node*)malloc(sizeof(node));
+    newNode->element = x;
+    newNode->next = l->next;
+    l->next = newNode;
 }
