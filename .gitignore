@@ -6,7 +6,6 @@ Thumbs.db
 
 *.log
 
-# Bỏ qua file môi trường
 .env
 
 
