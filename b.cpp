@@ -1,20 +1,31 @@
 #include<stdio.h>
+#include<stdlib.h>
 
-double power(float a, int n){
-    
-    if (n==0){
-        return 1;
-    }
-    if (n%2==0){
-        return (power(a,n/2)*power(a,n/2));
-    }
-    else{
-        return (power(a, n/2) * power(a, n/2) * a);
-        
-    }
+typedef int elementtype;
+typedef struct
+{
+    elementtype element;
+    node* next;
+}node;
+typedef node* list;
+typedef list position;
+
+list makenull(){
+    list head = (node*)malloc(sizeof(node));
+    head = NULL;
+    head->next = NULL;
+}
+
+list insertafterhead(elementtype x, list l){
+    node* newNode = (node*)malloc(sizeof(node));
+    newNode->element = x;
+    newNode->next = l->next;
+    l->next = newNode;
+
 }
 
 int main(){
-    printf("%.4f\n", power(2, 3));
+    list l = makenull();
+    
     return 0;
 }
