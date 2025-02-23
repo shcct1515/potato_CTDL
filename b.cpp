@@ -10,7 +10,7 @@ typedef struct node
 typedef node* list;
 
 list makenull(){
-    list header = (node*)malloc(sizeof(node));
+    node* header = (node*)malloc(sizeof(node));
     header->next = NULL;
     return header;
 }
@@ -22,15 +22,9 @@ void insertafterheader(elementtype x, list l){
     l->next = newNode;
 }
 
-void del(list l){
-    node* p = l->next;
-    l->next = p->next;
-    free(p);
-}
-
 void printlist(list l){
     node* p = l->next;
-    while (p != NULL)
+    while (p !=NULL)
     {
         printf("%d ", p->element);
         p = p->next;
@@ -38,12 +32,18 @@ void printlist(list l){
     
 }
 
+void dellist(list l){
+    node* p  = l->next;
+    l->next = p->next;
+    free(p);
+}
+
 int main(){
     list l = makenull();
     insertafterheader(10, l);
     insertafterheader(11, l);
     insertafterheader(12, l);
-    del(l);
+    dellist(l);
     printlist(l);
     return 0;
 }
