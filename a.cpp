@@ -49,14 +49,31 @@ void print(list* l){
     
 }
 
+void insertuserinput(list* l){
+    position p;
+    elementtype x;
+    printf("nhap gia tri va vi tri: ");
+    scanf("%d %d", &x, &p);
+    insert(x, p, l);
+    printf("__________________________________________\n");
+}
+
 int main(){
     list l;
     makenull(&l);
-    l.element[0] = 2;
-    l.element[1] = 4;
-    l.element[2] = 6;
-    l.last = 3;
-    insert(3, 4, &l);
+    bool run = true;
+    char c;
+    while(run){
+        insertuserinput(&l);
+        print(&l);
+        printf("ban muon nhap tiep ko (y/n): ");
+        scanf("%c", &c);
+        if (c == 'n')
+        {
+            run = false;
+        }
+    }
+    insertuserinput(&l);
     print(&l);
     return 0;
 }
