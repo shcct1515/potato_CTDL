@@ -52,10 +52,15 @@ void printlist(list l){
     
 }
 
-void dellist(list l){
-    node* p  = l->next;
-    l->next = p->next;
-    free(p);
+void dellist(position p, list l){
+    node* temp = l;
+    for (int i = 1; i < p; i++)
+    {
+        temp = temp->next;
+    }
+    node* delnode = temp->next;
+    temp->next = delnode->next;
+    free(delnode);
 }
 
 int main(){
