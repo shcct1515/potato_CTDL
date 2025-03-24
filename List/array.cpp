@@ -15,7 +15,7 @@ void makenull(list *l){
 void insert(int x, position p, list* l){
     if (p>0 && p<= max && l->last<max)
     {
-        for (int i = l->last-1; i >= p-1; i--)
+        for (int i = l->last-1; i > p; i--)
         {
             l->element[i+1] = l->element[i];
         }
@@ -73,7 +73,5 @@ int main(){
             run = false;
         }
     }
-    insertuserinput(&l);
-    print(&l);
     return 0;
 }
