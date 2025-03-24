@@ -10,7 +10,6 @@ typedef struct node
 typedef node* position;
 
 void makenull(stack* s){
-    s = (node*)malloc(sizeof(node));
     s->next = NULL;
 }
 
@@ -59,6 +58,7 @@ int main(){
     insert(11, &s);
     insert(12, &s);
     insert(13, &s);
+    delstack(&s);
     delstack(&s);
     printstack(&s);
     return 0;
