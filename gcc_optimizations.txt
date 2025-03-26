@@ -1,0 +1,45 @@
+# Tổng hợp các kiểu tối ưu hóa trong GCC bằng #pragma GCC optimize
+
+## 1. Tắt tối ưu hóa
+#pragma GCC optimize("O0")
+
+## 2. Các mức tối ưu hóa tổng quát
+#pragma GCC optimize("O1")  // Mức tối ưu hóa thấp
+#pragma GCC optimize("O2")  // Cân bằng giữa tốc độ và kích thước
+#pragma GCC optimize("O3")  // Mức tối ưu hóa cao
+#pragma GCC optimize("Ofast")  // Tối ưu hóa mạnh nhất (có thể gây sai số)
+#pragma GCC optimize("Os")  // Tối ưu hóa kích thước file
+
+## 3. Tối ưu hóa vòng lặp
+#pragma GCC optimize("unroll-loops")  // Mở rộng vòng lặp
+#pragma GCC optimize("peel-loops")  // Xử lý riêng lần lặp đầu
+#pragma GCC optimize("unswitch-loops")  // Di chuyển điều kiện ra ngoài vòng lặp
+
+## 4. Tối ưu hóa số học
+#pragma GCC optimize("fast-math")  // Tăng tốc tính toán số thực (có thể làm sai số)
+#pragma GCC optimize("no-signed-zeros")  // Giả sử không có -0.0
+#pragma GCC optimize("reciprocal-math")  // Chuyển phép chia thành nhân nghịch đảo
+
+## 5. Tối ưu hóa bộ nhớ và con trỏ
+#pragma GCC optimize("strict-aliasing")  // Giả định các con trỏ khác kiểu không trỏ chung vùng nhớ
+#pragma GCC optimize("no-stack-protector")  // Tắt bảo vệ stack (tăng tốc nhưng giảm bảo mật)
+
+## 6. Tối ưu hóa gọi hàm
+#pragma GCC optimize("inline-functions")  // Inline các hàm nhỏ
+#pragma GCC optimize("inline-small-functions")  // Chỉ inline các hàm rất nhỏ
+#pragma GCC optimize("no-inline")  // Tắt inline
+
+## 7. Tối ưu hóa đặc biệt
+#pragma GCC optimize("fipa-sra")  // Truyền tham số bằng giá trị thay vì con trỏ
+#pragma GCC optimize("align-functions=32")  // Căn chỉnh hàm theo 32 byte
+#pragma GCC optimize("align-loops=16")  // Căn chỉnh vòng lặp theo 16 byte
+
+## 8. Tắt hoặc bật tối ưu hóa cụ thể
+#pragma GCC optimize("-fno-move-loop-invariants")  // Tắt tối ưu hóa di chuyển biểu thức vòng lặp
+#pragma GCC optimize("-ftree-vectorize")  // Bật tối ưu hóa vectorization (dùng SIMD)
+
+## 9. Ví dụ tối ưu hóa mạnh nhất
+#pragma GCC optimize("O3,unroll-loops,fast-math,inline-functions")
+
+## 10. Biên dịch với tối ưu hóa mạnh nhất (dùng trong terminal)
+g++ -O3 -march=native -funroll-loops -ffast-math -o my_program my_program.cpp
