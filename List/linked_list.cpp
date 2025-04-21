@@ -2,11 +2,11 @@
 #include<stdlib.h>
 
 typedef int elementtype;
-typedef struct node
+struct node
 {
     elementtype element;
     struct node* next;
-} node;
+};
 typedef node* list;
 typedef int position;
 
