@@ -5,72 +5,72 @@ typedef int elementtype;
 struct node
 {
     elementtype element;
-    struct node* next;
+    node* next;
 };
-typedef node* list;
-typedef int position;
+typedef node* position;
+typedef position list;
 
-list makenull(){
-    node* header = (node*)malloc(sizeof(node));
-    header->next = NULL;
-    return header;
+void makenull(list* l){
+    (*l) = (node*)malloc(sizeof(node));
+    (*l)->next = NULL;
 }
 
-void insertafterheader(elementtype x, list l){
-    node* newNode = (node*)malloc(sizeof(node));
-    newNode->element = x;
-    newNode->next = l->next;
-    l->next = newNode;
+void insert(elementtype x, position p){
+    node* newnode = (node*)malloc(sizeof(node));
+    newnode->element =x;
+    newnode->next = p->next;
+    p->next = newnode;
 }
 
-void insert(elementtype x, position p, list l){
-    node* temp = l;
-    if(temp->next == NULL){
-        insertafterheader(x, l);
-    } else{
-        node* newNode = (node*)malloc(sizeof(node));
-        for (int i = 1; i < p; i++)
-        {
-            temp = temp->next;
-        }
-        newNode->element = x;
-        newNode->next = temp->next;
-        temp->next = newNode;
-    }
-}
-
-void printlist(list l){
-    node* p = l->next;
-    int point = 1;
-    while (p !=NULL)
-    {
-        printf("vi tri %d: ", point);
-        printf("%d \n", p->element);
-        p = p->next;
-        point++;
-    }
-    
-}
-
-void dellist(position p, list l){
-    node* temp = l;
+void nhapds(list l){
+    elementtype x, p;
+    position temp = l;
+    printf("nhap gia tri: ");
+    scanf("%d", &x);
+    printf("nhap vi tri: ");
+    scanf("%d", &p);
     for (int i = 1; i < p; i++)
     {
         temp = temp->next;
     }
-    node* delnode = temp->next;
-    temp->next = delnode->next;
+    insert(x, temp);
+}
+
+void dellist(position p){
+    node* delnode = p->next;
+    p->next = delnode->next;
     free(delnode);
 }
 
+void xoads(list l){
+    elementtype p;
+    position temp = l;
+    printf("nhap vi tri can xoa: ");
+    scanf("%d", &p);
+    for (int i = 1; i < p; i++)
+    {
+        temp = temp->next;
+    }
+    dellist(temp);
+}
+
+void printlist(list l){
+    node* temp = l->next;
+    while (temp != NULL)
+    {
+        printf("%d ", temp->element);
+        temp = temp->next;
+    }
+    
+}
+
 int main(){
-    list l = makenull();
-    insertafterheader(11, l);
-    insertafterheader(12, l);
-    insertafterheader(13, l);
-    insertafterheader(14, l);
-    insert(9, 1, l);
-    insert(10, 6, l);
+    list l;
+    makenull(&l);
+    nhapds(l);
+    nhapds(l);
+    nhapds(l);
+    xoads(l);
     printlist(l);
     return 0;
 }
